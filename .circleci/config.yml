@@ -1,0 +1,24 @@
+# CircleCIプラットフォームのバージョンを指定
+version: 2.1
+# 子ジョブのコレクションが含まれる
+# ジョブの名前を指定する(build, test, deploy)
+jobs:
+  # jobsコレクションの最初の子ジョブ
+  build:
+    #ジョブのコマンドが実行されるコンテナに対して、Dockerイメージを使用
+    docker:
+      - image: alpine:3.15
+    # stepコレクション。runディレクティブのリスト
+    step:
+      # Gitリポジトリからコードをフェッチする
+      - checkout
+      # runディレクティブは宣言された順番に実行される
+      - run:
+          # name属性。警告・エラー・出力などを返す時に関連情報を提供
+          # ビルドプロセス内のアクションとしてわかりやすいものにする
+          name: The First Step
+          # command属性。実行するシェルコマンドのリスト。
+          # 最初のパイプ|は複数行のシェルコマンドがあることを示す
+          command: |
+            echo 'Hello World!'
+            echo 'This is the delivery pipline'
