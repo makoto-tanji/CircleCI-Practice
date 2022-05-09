@@ -9,7 +9,7 @@ jobs:
     docker:
       - image: alpine:3.15
     # stepコレクション。runディレクティブのリスト
-    step:
+    steps:
       # Gitリポジトリからコードをフェッチする
       - checkout
       # runディレクティブは宣言された順番に実行される
